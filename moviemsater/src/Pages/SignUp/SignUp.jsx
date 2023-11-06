@@ -64,7 +64,7 @@ const SignUp = () => {
                   class="mr-2"
                 />
                 <label class="text-sm" for="remember">
-                  I agree with the Privacy Policy
+                  I agree with the privacy policy
                 </label>
               </div>
               <div class="flex items-center justify-center mt-8 font-bold">
