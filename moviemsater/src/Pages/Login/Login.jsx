@@ -7,7 +7,7 @@ const Login = () => {
       <div class="bg-gray-800">
         <div class="p-8 lg:w-1/2 mx-auto">
           <div class="bg-white rounded-t-lg p-8">
-            <p class="text-center text-sm text-black font-bold">Sign up with</p>
+            <p class="text-center text-sm text-black font-bold">LogIn with</p>
             <div>
               <div class="flex items-center justify-center space-x-4 mt-2">
                 <Link class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
@@ -53,7 +53,7 @@ const Login = () => {
           </div>
           <div class="bg-gray-100 rounded-b-lg py-3 px-4 lg:px-24">
             <p class="text-center text-sm text-black font-bold">
-              Or sign up with credentials
+              Or LogIn with credentials
             </p>
             <form class="mt-3">
              
@@ -111,13 +111,13 @@ const Login = () => {
               </div>
               <div class="flex items-center justify-center mt-8 font-bold">
                 <Link class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                  Create Account
+                  LogIn
                 </Link>
 
 				
               </div>
 			  <p className="mt-3 text-sm font-bold text-black">
-					No Account? <Link className="text-[#4F46E5]">CREATE ONE</Link>
+					No Account? <Link to="/signUp" className="text-[#4F46E5]">CREATE ONE</Link>
 				</p>
 
             </form>
