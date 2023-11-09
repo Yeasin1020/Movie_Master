@@ -1,31 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignUp = () => {
-	return (
-		<div>
-      <div class="bg-gray-800">
-        <div class="p-8 lg:w-1/2 mx-auto">
-          <div class="bg-gray-100 rounded-t-lg p-3">
-           
-          </div>
-          <div class="bg-gray-100 rounded-b-lg py-3 px-4 lg:px-24">
-            <p class="text-center text-xl text-black font-bold">
+
+  const {user, createUser} = useContext(AuthContext);
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  return (
+    <div>
+      <div className="bg-gray-800">
+        <div className="p-8 lg:w-1/2 mx-auto">
+          <div className="bg-gray-100 rounded-t-lg p-3"></div>
+          <div className="bg-gray-100 rounded-b-lg py-3 px-4 lg:px-24">
+            <p className="text-center text-xl text-black font-bold">
               Create account
             </p>
-            <form class="mt-3">
-             
-              <div class="relative mt-3">
+            <form onSubmit={handleSignUp} className="mt-3">
+              <div className="relative mt-3">
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  
+                  type="email"
+                  name="email"
                   placeholder="Email"
+                  required
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 ml-3 text-gray-400 p-1"
+                    className="h-7 w-7 ml-3 text-gray-400 p-1"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -34,17 +54,19 @@ const SignUp = () => {
                   </svg>
                 </div>
               </div>
-              <div class="relative mt-3">
+              <div className="relative mt-3">
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  
+                  type="password"
+                  name="password"
                   placeholder="Password"
+                  required
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 ml-3 text-gray-400 p-1"
+                    className="h-7 w-7 ml-3 text-gray-400 p-1"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -52,38 +74,40 @@ const SignUp = () => {
                   </svg>
                 </div>
               </div>
-              <p class="mt-4 italic text-black text-xs">
+              <p className="mt-4 italic text-black text-xs">
                 Password strength:
-                <span class="font-bold text-green-400">strong</span>
+                <span className="font-bold text-green-400">strong</span>
               </p>
-              <div class="mt-4 flex items-center text-gray-500">
+              <div className="mt-4 flex items-center text-gray-500">
                 <input
                   type="checkbox"
                   id="remember"
                   name="remember"
-                  class="mr-2"
+                  className="mr-2"
                 />
-                <label class="text-sm" for="remember">
+                <label className="text-sm" for="remember">
                   I agree with the privacy policy
                 </label>
               </div>
-              <div class="flex items-center justify-center mt-8 font-bold">
-                <Link class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                  create account
-                </Link>
-
-				
+              <div className="flex items-center justify-center mt-8 font-bold">
+                <button  className="p-0">
+                  <button type="submit" className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                    create account
+                  </button>
+                </button>
               </div>
-			  <p className="mt-3 text-sm font-bold text-black">
-					Already have an account? <Link to="/logIn" className="text-[#4F46E5]">LogIn</Link>
-				</p>
-
+              <p className="mt-3 text-sm font-bold text-black">
+                Already have an account?{" "}
+                <Link to="/logIn" className="text-[#4F46E5]">
+                  LogIn
+                </Link>
+              </p>
             </form>
           </div>
         </div>
       </div>
     </div>
-	);
+  );
 };
 
 export default SignUp;
