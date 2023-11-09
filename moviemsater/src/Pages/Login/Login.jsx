@@ -1,20 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+
+  const {signIn} = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+
+    signIn(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  };
   return (
     <div>
-      <div class="bg-gray-800">
-        <div class="p-8 lg:w-1/2 mx-auto">
-          <div class="bg-white rounded-t-lg p-8">
-            <p class="text-center text-sm text-black font-bold">LogIn with</p>
+      <div className="bg-gray-800">
+        <div className="p-8 lg:w-1/2 mx-auto">
+          <div className="bg-white rounded-t-lg p-8">
+            <p className="text-center text-sm text-black font-bold">
+              LogIn with
+            </p>
             <div>
-              <div class="flex items-center justify-center space-x-4 mt-2">
-                <Link class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+              <div className="flex items-center justify-center space-x-4 mt-2">
+                <Link className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
-                    class="w-6 h-6 mr-3"
+                    className="w-6 h-6 mr-3"
                   >
                     <path
                       fill-rule="evenodd"
@@ -23,10 +46,10 @@ const Login = () => {
                   </svg>
                   Github
                 </Link>
-                <Link class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <Link className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-6 h-6 mr-3"
+                    className="w-6 h-6 mr-3"
                     viewBox="0 0 48 48"
                   >
                     <path
@@ -51,23 +74,22 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-b-lg py-3 px-4 lg:px-24">
-            <p class="text-center text-sm text-black font-bold">
+          <div className="bg-gray-100 rounded-b-lg py-3 px-4 lg:px-24">
+            <p className="text-center text-sm text-black font-bold">
               Or LogIn with credentials
             </p>
-            <form class="mt-3">
-             
-              <div class="relative mt-3">
+            <form onSubmit={handleLogin} className="mt-3">
+              <div className="relative mt-3">
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  id="email"
+                  type="email"
                   placeholder="Email"
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 ml-3 text-gray-400 p-1"
+                    className="h-7 w-7 ml-3 text-gray-400 p-1"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -76,17 +98,17 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <div class="relative mt-3">
+              <div className="relative mt-3">
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  id="password"
+                  type="password"
                   placeholder="Password"
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-7 w-7 ml-3 text-gray-400 p-1"
+                    className="h-7 w-7 ml-3 text-gray-400 p-1"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -94,32 +116,32 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <p class="mt-4 italic text-black text-xs">
+              <p className="mt-4 italic text-black text-xs">
                 Password strength:
-                <span class="font-bold text-green-400">strong</span>
+                <span className="font-bold text-green-400">strong</span>
               </p>
-              <div class="mt-4 flex items-center text-gray-500">
+              <div className="mt-4 flex items-center text-gray-500">
                 <input
                   type="checkbox"
                   id="remember"
                   name="remember"
-                  class="mr-2"
+                  className="mr-2"
                 />
-                <label class="text-sm" for="remember">
+                <label className="text-sm" for="remember">
                   I agree with the Privacy Policy
                 </label>
               </div>
-              <div class="flex items-center justify-center mt-8 font-bold">
-                <Link class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+              <div className="flex items-center justify-center mt-8 font-bold">
+                <button type="submit" className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   LogIn
-                </Link>
-
-				
+                </button>
               </div>
-			  <p className="mt-3 text-sm font-bold text-black">
-					No Account? <Link to="/signUp" className="text-[#4F46E5]">CREATE ONE</Link>
-				</p>
-
+              <p className="mt-3 text-sm font-bold text-black">
+                No Account?{" "}
+                <Link to="/signUp" className="text-[#4F46E5]">
+                  CREATE ONE
+                </Link>
+              </p>
             </form>
           </div>
         </div>
