@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
 
-  const {signIn} = useContext(AuthContext);
+  const {signIn, signInWithGoogle} = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -24,6 +24,17 @@ const Login = () => {
       console.log(error);
     })
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
   return (
     <div>
       <div className="bg-gray-800">
@@ -47,7 +58,7 @@ const Login = () => {
                   </svg>
                   Github
                 </Link>
-                <Link className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button onClick={handleGoogleSignIn} className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6 mr-3"
@@ -71,7 +82,7 @@ const Login = () => {
                     />
                   </svg>
                   Google
-                </Link>
+                </button>
               </div>
             </div>
           </div>
