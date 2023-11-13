@@ -1,13 +1,12 @@
 import React from "react";
-
+import Card from "./Card/Card";
 import Slider from "./Slider/Slider";
-import Header from "../../Header/Header";
 
 const Home = () => {
   return (
   <div>
     <Slider></Slider>
-    <Header></Header>
+    <Card></Card>
   </div>
   );
 };

@@ -2,8 +2,21 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
 
+  const notify = () => {
+    return toast.success("Successfully login!!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+  const notifyError = () => {
+    return toast.error("Something went wrong please try again...", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
   const {signIn, signInWithGoogle} = useContext(AuthContext);
 
   const handleLogin = (event) => {
@@ -18,10 +31,13 @@ const Login = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser)
+      notify();
       form.reset();
+
     })
     .catch(error => {
       console.log(error);
+      notifyError();
     })
   };
 
@@ -30,9 +46,11 @@ const Login = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      notify();
     })
     .catch(error => {
       console.log(error);
+      notifyError();
     })
   }
   return (
@@ -142,6 +160,7 @@ const Login = () => {
                   CREATE ONE
                 </Link>
               </p>
+              <ToastContainer />
             </form>
           </div>
         </div>
