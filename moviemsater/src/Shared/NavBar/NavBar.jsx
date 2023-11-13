@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import { CgProfile } from "react-icons/cg";
-import { Dropdown } from "flowbite-react";
-
 import {
   Menu,
   MenuHandler,
@@ -18,7 +15,7 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         console.log(error);
       });
@@ -36,7 +33,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar fixed z-10 bg-opacity-90 bg-gray-900 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -75,11 +72,11 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 text-white">
             <li tabIndex={0}>
               <details>
                 <summary>Movie</summary>
-                <ul className="p-2 z-10">
+                <ul className="p-2 z-10 text-black">
                   <li>
                     <a>Bangla</a>
                   </li>
@@ -92,7 +89,7 @@ const NavBar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>Anime</summary>
-                <ul className="p-2 z-10">
+                <ul className="p-2 z-10 text-black">
                   <li>
                     <a>Romantic</a>
                   </li>
@@ -105,7 +102,7 @@ const NavBar = () => {
             <li tabIndex={0}>
               <details>
                 <summary>Others</summary>
-                <ul className="p-2 z-10">
+                <ul className="p-2 z-10 text-black">
                   <li>
                     <a>1</a>
                   </li>
@@ -115,13 +112,15 @@ const NavBar = () => {
                 </ul>
               </details>
             </li>
-            <div class="form-control">
-              <input
-                type="text"
-                placeholder="Search"
-                class="input input-bordered w-24 md:w-auto"
-              />
-            </div>
+            <li>
+              <div class="form-control">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  class="input input-bordered h-6  w-24 md:w-auto"
+                />
+              </div>
+            </li>
           </ul>
         </div>
         <div className="navbar-end h-10 mr-5 ">
@@ -129,16 +128,16 @@ const NavBar = () => {
             <MenuHandler>
               {
                 user ? <Avatar
-                variant="circular"
-                alt="tania andrew"
-                className="cursor-pointer"
-                src={user.photoURL}
-              /> : <Avatar
-              variant="circular"
-              alt="tania andrew"
-              className="cursor-pointer"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            />
+                  variant="circular"
+                  alt="tania andrew"
+                  className="cursor-pointer"
+                  src={user.photoURL}
+                /> : <Avatar
+                  variant="circular"
+                  alt="tania andrew"
+                  className="cursor-pointer"
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                />
               }
             </MenuHandler>
             <MenuList>
