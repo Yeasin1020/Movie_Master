@@ -1,10 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const SignUp = () => {
 
+  const [error, setError] = useState("");
+
+  
   const {user, createUser} = useContext(AuthContext);
+
+  const notify = () => {
+    return toast.success("Account created successfully!!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+
+  const notifyError = () => {
+    return toast.error("Something went wrong please try again...", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+
+  function resolveAfter2Seconds() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 5000);
+    });
+  }
+
+  async function asyncCall() {
+    
+    
+   const windows = window.location.assign('/');
+   windows = await resolveAfter2Seconds();
+   notify();
+    // Expected output: "resolved"
+    return windows, notify();
+  }
+ 
+
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -13,15 +51,24 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    setError("");
+    if(password.length < 6){
+      return setError("password must be 6 characters or longer");
+    }
     console.log(email, password);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
+        
+        asyncCall();
+       
         form.reset();
+       
       })
       .catch((error) => {
         console.log(error);
+        notifyError();
       });
   };
   return (
@@ -75,9 +122,8 @@ const SignUp = () => {
                   </svg>
                 </div>
               </div>
-              <p className="mt-4 italic text-black text-xs">
-                Password strength:
-                <span className="font-bold text-green-400">strong</span>
+              <p className="mt-4 italic text-red-900 text-xs">
+                {error}
               </p>
               <div className="mt-4 flex items-center text-gray-500">
                 <input
@@ -103,6 +149,7 @@ const SignUp = () => {
                   LogIn
                 </Link>
               </p>
+              <ToastContainer />
             </form>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Main from "../Layout/Main";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AddMovie from "../Pages/AddMovie/AddMovie";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,15 @@ export const router = createBrowserRouter([
 		{
 			path: '/addMovie',
 			element: <AddMovie></AddMovie>
-		}
+		},
+		
 	]
+	
   },
+  {
+	path : '*',
+	element: <ErrorPage></ErrorPage>
+  }
+  
+ 
 ]);
