@@ -3,7 +3,7 @@
       "serialNum": 1,
       "type": "Drama",
       "name": "Avatar",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/d6d256f4-0214-449d-9814-80e44ba381a0.webp",
       "rating": 9.3,
       "movieLink": "https://www.example.com/movies/shawshank-redemption",
       "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
@@ -12,7 +12,7 @@
       "serialNum": 2,
       "type": "Crime",
       "name": "The Godfather",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/2b063787-9006-4f0a-a072-451c9f3e402b.webp",
       "rating": 9.2,
       "movieLink": "https://www.example.com/movies/the-godfather",
       "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
@@ -21,7 +21,7 @@
       "serialNum": 3,
       "type": "Action",
       "name": "The Dark Knight",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/b6e07b80-e5a7-48c6-8919-0aa7c3e70abb.webp",
       "rating": 9.0,
       "movieLink": "https://www.example.com/movies/the-dark-knight",
       "description": "When the menace known as The Joker emerges, Batman must confront the chaos he brings."
@@ -30,7 +30,7 @@
       "serialNum": 4,
       "type": "Crime",
       "name": "Pulp Fiction",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/dbf52ea7-e4b3-4f45-b999-fb8457612272.webp",
       "rating": 8.9,
       "movieLink": "https://www.example.com/movies/pulp-fiction",
       "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
@@ -39,7 +39,7 @@
       "serialNum": 5,
       "type": "Sci-Fi",
       "name": "Inception",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/aa296105-442f-4665-9208-1779024767ce.webp",
       "rating": 8.8,
       "movieLink": "https://www.example.com/movies/inception",
       "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
@@ -48,7 +48,7 @@
       "serialNum": 5,
       "type": "Sci-Fi",
       "name": "Inception",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/b6e07b80-e5a7-48c6-8919-0aa7c3e70abb.webp",
       "rating": 8.8,
       "movieLink": "https://www.example.com/movies/inception",
       "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
@@ -57,7 +57,7 @@
       "serialNum": 5,
       "type": "Sci-Fi",
       "name": "Inception",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/b6e07b80-e5a7-48c6-8919-0aa7c3e70abb.webp",
       "rating": 8.8,
       "movieLink": "https://www.example.com/movies/inception",
       "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
@@ -66,9 +66,9 @@
       "serialNum": 5,
       "type": "Sci-Fi",
       "name": "Inception",
-      "thumbnail": "https://i.ibb.co/8Dt4Z0t/Bhoomi-Poster.jpg",
+      "thumbnail": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/2b063787-9006-4f0a-a072-451c9f3e402b.webp",
       "rating": 8.8,
-      "movieLink": "https://www.example.com/movies/inception",
+      "movieLink": "https://static.crunchyroll.com/fms/landscape_large/1920x1080/94/png/dbf52ea7-e4b3-4f45-b999-fb8457612272.webp",
       "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O."
     },
     {
