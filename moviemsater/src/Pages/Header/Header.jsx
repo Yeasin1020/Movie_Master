@@ -1,81 +1,46 @@
-import React, { useEffect, useState,useRef } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-import './Header.css'
-
+import { dividerClasses } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Header = () => {
-  const [movie,setMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch("Movie.json")
-    .then(res => res.json())
-    .then(data => setMovie(data));
-  },[])
+      .then(res => res.json())
+      .then(data => setMovie(data));
+  }, [])
 
-  const [swiperRef, setSwiperRef] = useState(null);
-  const appendNumber = useRef(500);
-  const prependNumber = useRef(1);
-  // Create array with 500 slides
-  const [slides, setSlides] = useState(
-    Array.from({ length: 500 }).map((_, index) => `Slide ${index + 1}`)
-  );
-
-  const prepend = () => {
-    setSlides([
-      `Slide ${prependNumber.current - 2}`,
-      `Slide ${prependNumber.current - 1}`,
-      ...slides,
-    ]);
-    prependNumber.current = prependNumber.current - 2;
-    swiperRef.slideTo(swiperRef.activeIndex + 2, 0);
-  };
-
-  const append = () => {
-    setSlides([...slides, 'Slide ' + ++appendNumber.current]);
-  };
-
-  const slideTo = (index) => {
-    swiperRef.slideTo(index - 3, 0);
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 7
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2
+    }
   };
 
 
   return (
-    <div className=''>
-<Swiper
-        modules={[Virtual, Navigation, Pagination]}
-        onSwiper={setSwiperRef}
-        slidesPerView={5}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        virtual
-      >
-        {movie.map((slideContent, index) => (
-          <SwiperSlide  key={slideContent} virtualIndex={index}>
-            <div className=''>
-              <div>
-              <img className='' src={slideContent.thumbnail} alt="" srcset="" />
-              </div>
-              <p className='text-white'>{slideContent.name}</p>
-            </div>
-            
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-
-    </div>
+    <><Carousel responsive={responsive}>
+      {movie.map(m => <div>
+        <img src={m.thumbnail} alt={m.name} />
+      </div>)}
+    </Carousel>
+    </>
   );
 };
 
