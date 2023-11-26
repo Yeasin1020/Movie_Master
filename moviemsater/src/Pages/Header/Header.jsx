@@ -40,7 +40,7 @@ const Header = () => {
       <div>
         <Carousel responsive={responsive}>
           {movie.map((m) => (
-            <div className="mr-5 mt-[-110px] lg:mt-5 ">
+            <div className="mr-5 mt-[-150px] lg:mt-5 ">
               <div class=" hero-container ">
                 <div class="main-container">
                   <div class="poster-container pt-[185px] lg:pt-0 lg:w-[230px]">
@@ -54,10 +54,10 @@ const Header = () => {
                     <div class="ticket__content">
                       <h4 class="ticket__movie-title"></h4>
 
-                      <div class="mt-6 mb-5">
+                      <div class="mt-6 mb-3">
                         <Link
                           href="#"
-                          class="button pulse inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+                          class="button pulse inline-block rounded-lg bg-[#D81C5C] px-5 py-3 text-sm font-medium text-white"
                         >
                           Live View
                         </Link>
