@@ -1,9 +1,10 @@
-import { Link, dividerClasses } from "@mui/material";
+import { dividerClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./Header.css";
-import "./HeaderButton.scss"
+import "./HeaderButton.scss";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [movie, setMovie] = useState([]);
@@ -56,7 +57,7 @@ const Header = () => {
 
                       <div class="mt-6 mb-3">
                         <Link
-                          href="#"
+                          to="/movieDetails"
                           class="button pulse inline-block rounded-lg bg-[#D81C5C] px-5 py-3 text-sm font-medium text-white"
                         >
                           Live View
