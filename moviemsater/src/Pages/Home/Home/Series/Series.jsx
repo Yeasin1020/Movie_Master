@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Series = () => {
   return (
     <div>
-		<div className="text-gray-500 font-bold text-4xl mb-2 ml-2 ">
+		<div className="text-gray-500 font-bold text-4xl mb-2 ml-5 ">
 			Top series for you
 		</div>
       <div class="relative mb-10 mx-0 lg:mx-5 grid grid-cols-1 lg:grid-cols-2 w-full  flex-row rounded-xl   bg-clip-border text-gray-300 shadow-md">
