@@ -32,7 +32,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="pb-[72px]">
+    <div className="pb-[65px] lg:pb-[72px]">
       <div className="navbar  fixed z-10 bg-opacity-90 bg-gray-900 text-white">
         <div className="navbar-start">
           <div className="dropdown">
