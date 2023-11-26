@@ -1,8 +1,9 @@
-import { dividerClasses } from "@mui/material";
+import { Link, dividerClasses } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./Header.css";
+import "./HeaderButton.scss"
 
 const Header = () => {
   const [movie, setMovie] = useState([]);
@@ -36,35 +37,39 @@ const Header = () => {
   return (
     <>
       <div className="ml-3 mt-10  font-bold text-3xl">Top Movie for You</div>
-      <Carousel responsive={responsive}>
-        {movie.map((m) => (
-          <div className="mr-5">
-            <div class="hero-container ">
-              <div class="main-container">
-                <div class="poster-container">
-                  
-                    <img
-                      src="https://i.ibb.co/ThPNnzM/blade-runner.jpg"
-                      class="poster"
-                    />
-                  
-                </div>
-                <div class="ticket-container">
-                  <div class="ticket__content">
-                    <h4 class="ticket__movie-title"></h4>
-                    <p class="ticket__movie-slogan">
-                    {m.name}
-                    </p>
-                    <p class="ticket__current-price">$28.00</p>
-                    <p class="ticket__old-price">$44.99</p>
-                    <button class="ticket__buy-btn">Buy now</button>
+      <div>
+        <Carousel responsive={responsive}>
+          {movie.map((m) => (
+            <div className="mr-5 mt-[-110px] lg:mt-5 ">
+              <div class=" hero-container ">
+                <div class="main-container">
+                  <div class="poster-container pt-[185px] lg:pt-0 lg:w-[230px]">
+                    <img src={m.thumbnail} class="poster" />
+                    <div className=" pt-2 text-gray-700 text-center">
+                      {m.name}
+                    </div>
+                  </div>
+
+                  <div class="ticket-container w-[155px] lg:w-[270px] mt-[145px] lg:mt-0 h-[300px] lg:h-[450px]">
+                    <div class="ticket__content">
+                      <h4 class="ticket__movie-title"></h4>
+
+                      <div class="mt-6 mb-5">
+                        <Link
+                          href="#"
+                          class="button pulse inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+                        >
+                          Live View
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>  
+              </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>
+      </div>
     </>
   );
 };
