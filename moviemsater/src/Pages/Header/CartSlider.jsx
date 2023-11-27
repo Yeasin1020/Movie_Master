@@ -1,16 +1,16 @@
-import { dividerClasses } from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "./Header.css";
-import "./HeaderButton.scss";
+import "./CartSlider.css";
+import "./CartSlider.scss";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const CartSlider = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    fetch("Movie.json")
+    fetch("http://localhost:5000/movies/movie")
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, []);
@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="ml-3 mt-10  font-bold text-3xl">Top Movie for You</div>
+      <div className="ml-3 mt-10  font-bold text-3xl">Movies for You</div>
       <div>
         <Carousel responsive={responsive}>
           {movie.map((m) => (
@@ -45,7 +45,7 @@ const Header = () => {
               <div class=" hero-container ">
                 <div class="main-container">
                   <div class="poster-container pt-[185px] lg:pt-0 lg:w-[230px]">
-                    <img src={m.thumbnail} class="poster" />
+                    <img className="" src={m.thumbnail} class="poster" />
                     <div className=" pt-2 text-gray-700 text-center">
                       {m.name}
                     </div>
@@ -75,4 +75,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default CartSlider;

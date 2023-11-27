@@ -2,10 +2,23 @@ import React, { useContext } from "react";
 import "./AddMovie.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddMovie = () => {
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const notify = () => {
+    return toast.success("Movie Added Successful!!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+  const notifyError = () => {
+    return toast.error("Something went wrong please try again...", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
 
   const handleAddMovie = event => {
     event.preventDefault();
@@ -33,7 +46,12 @@ const AddMovie = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        if (data.insertedId) {
+          form.reset();
+          notify();
+        }
       })
+
   }
 
   return (
@@ -74,8 +92,8 @@ const AddMovie = () => {
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 >
                   <option selected="">Select Type</option>
-                  <option value="Movie">Movie</option>
-                  <option value="Anime">Anime</option>
+                  <option value="movie">Movie</option>
+                  <option value="anime">Anime</option>
                 </select>
               </div>
               {/* <div class="w-full">
@@ -97,6 +115,7 @@ const AddMovie = () => {
                   <option selected="">Select category</option>
                   <option value="Romantic">Romantic</option>
                   <option value="Thriller">Thriller</option>
+                  <option value="Story">Story</option>
                   <option value="Sad">Sad</option>
                   <option value="Action">Action</option>
                   <option value="Horror">Horror</option>
@@ -113,7 +132,7 @@ const AddMovie = () => {
                   for="Quality"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  	Quality
+                  Quality
                 </label>
                 <select
                   id="Quality"
@@ -134,7 +153,7 @@ const AddMovie = () => {
                   for="Language"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Language	 
+                  Language
                 </label>
                 <select
                   id="Language"
@@ -146,7 +165,7 @@ const AddMovie = () => {
                   <option value="English">English</option>
                   <option value="Hindi">Hindi</option>
                   <option value="Tamil">Tamil</option>
-                 
+
                 </select>
               </div>
               {/* Host Email */}
@@ -185,7 +204,7 @@ const AddMovie = () => {
                   required
                 />
               </div>
-             
+
               <div class="sm:col-span-2">
                 <label
                   for="thumbnail"
@@ -203,7 +222,7 @@ const AddMovie = () => {
                 />
               </div>
 
-              
+
               <div class="sm:col-span-2">
                 <label
                   for="name"
@@ -244,6 +263,7 @@ const AddMovie = () => {
             >
               Add Movie
             </button>
+            <ToastContainer></ToastContainer>
           </form>
         </div>
       </section>

@@ -1,15 +1,16 @@
 import React from "react";
-import Card from "./Card/Card";
 import Slider from "./Slider/Slider";
-import Header from "../../Header/Header";
 import Series from "./Series/Series";
+import CartSlider from "../../Header/CartSlider";
+import AnimeCart from "../../Header/Animes/AnimeCart";
 
 const Home = () => {
   return (
     <div>
       <Slider></Slider>
       {/* <Card></Card> */}
-      <Header></Header>
+      <CartSlider></CartSlider>
+      <AnimeCart></AnimeCart>
       <Series></Series>
     </div>
   );
