@@ -1,16 +1,46 @@
 import { Button } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const AllMovie = () => {
 
   const [allMovies, setAllMovies] = useState([]);
+
+  const notify = () => {
+    return toast.success("Movie Added Successful!!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
 
   useEffect(() => {
     fetch('http://localhost:5000/allMovies')
       .then(res => res.json())
       .then(data => setAllMovies(data))
   }, [])
+
+  const reload = async () => {
+    setTimeout(() => {
+     return location.reload()
+  }, 5000);
+    
+  }
+  const movieDelete = (id) => {
+    console.log('delete', id);
+    fetch(`http://localhost:5000/allMovies/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.deletedCount>0){
+        
+        
+        notify();
+        reload()
+      }
+    })
+  }
 
   return (
     <div>
@@ -97,10 +127,11 @@ const AllMovie = () => {
                 </td>
                 <td class="px-6 py-4">
                   <div>
-                    <Link to="/editMovie">
+                    <Link to={`/editMovie/${movies._id}`}>
                       <Button className="mr-1 w-28">Edit</Button>
                     </Link>
-                    <Button className="bg-red-900 w-28">Delete</Button>
+                    <Button onClick={() => movieDelete(movies._id)} className="bg-red-900 w-28">Delete</Button>
+                    <ToastContainer></ToastContainer>
                   </div>
                 </td>
               </tr>)
