@@ -14,11 +14,7 @@ const AddMovie = () => {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   }
-  const notifyError = () => {
-    return toast.error("Something went wrong please try again...", {
-      position: toast.POSITION.BOTTOM_CENTER,
-    });
-  }
+ 
 
   const handleAddMovie = event => {
     event.preventDefault();
@@ -50,6 +46,7 @@ const AddMovie = () => {
           form.reset();
           notify();
         }
+        
       })
 
   }

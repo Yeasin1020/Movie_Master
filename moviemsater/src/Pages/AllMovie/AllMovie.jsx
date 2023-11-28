@@ -97,7 +97,7 @@ const AllMovie = () => {
                 </td>
                 <td class="px-6 py-4">
                   <div>
-                    <Link to="/editMovie">
+                    <Link to={`/editMovie/${movies._id}`}>
                       <Button className="mr-1 w-28">Edit</Button>
                     </Link>
                     <Button className="bg-red-900 w-28">Delete</Button>

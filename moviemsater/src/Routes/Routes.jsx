@@ -35,13 +35,15 @@ export const router = createBrowserRouter([
         element: <MovieDetails></MovieDetails>,
       },
       {
-		path: "/allMovie",
-		element: <AllMovie></AllMovie>
-	  },
-	  {
-		path: "/editMovie",
-		element: <EditMovie></EditMovie>
-	  }
+        path: "/allMovie",
+        element: <AllMovie></AllMovie>,
+      },
+      {
+        path: "/editMovie/:id",
+        element: <EditMovie></EditMovie>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/editMovie/${params.id}`),
+      },
     ],
   },
   {
