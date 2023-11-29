@@ -8,6 +8,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MovieDetails from "../Pages/MovieDetails/MovieDetails";
 import AllMovie from "../Pages/AllMovie/AllMovie";
 import EditMovie from "../Pages/EditMovie/EditMovie";
+import AnimeDetails from "../Pages/AnimeDetails/AnimeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -31,8 +32,16 @@ export const router = createBrowserRouter([
         element: <AddMovie></AddMovie>,
       },
       {
-        path: "/movieDetails",
+        path: "/movieDetails/:id",
         element: <MovieDetails></MovieDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movieDetails/${params.id}`),
+      },
+      {
+        path: "/animeDetails/:id",
+        element: <AnimeDetails></AnimeDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/animeDetails/${params.id}`),
       },
       {
         path: "/allMovie",
