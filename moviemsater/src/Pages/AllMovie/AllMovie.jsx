@@ -14,7 +14,7 @@ const AllMovie = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/allMovies')
+    fetch('https://movie-master-server.vercel.app/allMovies')
       .then(res => res.json())
       .then(data => setAllMovies(data))
   }, [])
@@ -27,7 +27,7 @@ const AllMovie = () => {
   }
   const movieDelete = (id) => {
     console.log('delete', id);
-    fetch(`http://localhost:5000/allMovies/${id}`, {
+    fetch(`https://movie-master-server.vercel.app/allMovies/${id}`, {
       method: 'DELETE'
     })
     .then(res => res.json())

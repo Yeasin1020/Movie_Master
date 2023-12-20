@@ -32,7 +32,7 @@ const AddMovie = () => {
     console.log(name, type, category, thumbnail, MovieLink, desc, Quality, Language, hostEmail, hostName);
     const addMovie = { name, type, category, thumbnail, MovieLink, desc, Quality, Language, hostEmail, hostName }
 
-    fetch('http://localhost:5000/addMovie', {
+    fetch('https://movie-master-server.vercel.app/addMovie', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -10,7 +10,7 @@ const AnimeCart = () => {
     const [anime, setAnime] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/animes/anime")
+        fetch("https://movie-master-server.vercel.app/animes/anime")
             .then((res) => res.json())
             .then((data) => setAnime(data));
     }, []);
