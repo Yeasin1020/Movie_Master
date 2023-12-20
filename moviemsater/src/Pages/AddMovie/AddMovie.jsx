@@ -10,7 +10,7 @@ const AddMovie = () => {
 
   const { user } = useContext(AuthContext);
   const notify = () => {
-    return toast.success("Movie Added Successful!!!", {
+    return toast.success("Movie Added Successful!!", {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   }
