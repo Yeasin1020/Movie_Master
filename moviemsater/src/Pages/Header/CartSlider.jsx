@@ -10,7 +10,7 @@ const CartSlider = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/movies/movie")
+    fetch("https://movie-master-server.vercel.app/movies/movie")
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, []);

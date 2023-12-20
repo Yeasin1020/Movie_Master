@@ -57,7 +57,10 @@ const NavBar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
+                <Link to="/addMovie">Add Movie</Link>
+              </li>
+              <li>
+                <Link to="/allMovie">All Movie</Link>
               </li>
               <li>
                 <a>Parent</a>
@@ -67,8 +70,8 @@ const NavBar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Movie M4ster
+          <Link to="/" className="btn btn-ghost flex h-10 normal-case text-xl">
+           <img className="w-10 h-10 " src="/src/assets/movie_m4ster-high-resolution-logo (1).svg" alt="" /> <span>Movie M4ster</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

@@ -35,13 +35,13 @@ export const router = createBrowserRouter([
         path: "/movieDetails/:id",
         element: <MovieDetails></MovieDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movieDetails/${params.id}`),
+          fetch(`https://movie-master-server.vercel.app/movieDetails/${params.id}`),
       },
       {
         path: "/animeDetails/:id",
         element: <AnimeDetails></AnimeDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/animeDetails/${params.id}`),
+          fetch(`https://movie-master-server.vercel.app/animeDetails/${params.id}`),
       },
       {
         path: "/allMovie",
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         path: "/editMovie/:id",
         element: <EditMovie></EditMovie>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/editMovie/${params.id}`),
+          fetch(`https://movie-master-server.vercel.app/editMovie/${params.id}`),
       },
     ],
   },

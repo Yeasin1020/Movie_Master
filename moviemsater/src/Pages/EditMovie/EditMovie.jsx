@@ -63,7 +63,7 @@ const EditMovie = () => {
       hostName,
     };
 
-    fetch(`http://localhost:5000/editMovie/${_id}`, {
+    fetch(`https://movie-master-server.vercel.app/editMovie/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
