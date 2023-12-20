@@ -10,7 +10,7 @@ const CartSlider = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/movies/movie")
+    fetch("https://movie-master-server.vercel.app/movies/movie")
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, []);
@@ -57,10 +57,10 @@ const CartSlider = () => {
 
                       <div class="mt-6 mb-3">
                         <Link
-                          to="/movieDetails"
+                          to={`/movieDetails/${m._id}`}
                           class="button pulse inline-block rounded-lg bg-[#D81C5C] px-5 py-3 text-sm font-medium text-white"
                         >
-                          Live View
+                         View Movie
                         </Link>
                       </div>
                     </div>

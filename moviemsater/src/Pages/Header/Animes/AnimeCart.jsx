@@ -10,7 +10,7 @@ const AnimeCart = () => {
     const [anime, setAnime] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/animes/anime")
+        fetch("https://movie-master-server.vercel.app/animes/anime")
             .then((res) => res.json())
             .then((data) => setAnime(data));
     }, []);
@@ -57,10 +57,10 @@ const AnimeCart = () => {
 
                                             <div class="mt-6 mb-3">
                                                 <Link
-                                                    to="/movieDetails"
+                                                    to={`/animeDetails/${m._id}`}
                                                     class="button pulse inline-block rounded-lg bg-[#D81C5C] px-5 py-3 text-sm font-medium text-white"
                                                 >
-                                                    Live View
+                                                    View Details
                                                 </Link>
                                             </div>
                                         </div>

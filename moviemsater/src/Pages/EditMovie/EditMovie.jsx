@@ -1,7 +1,85 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const EditMovie = () => {
+  const update = useLoaderData();
+  console.log(update);
+  const {
+    _id,
+    type,
+    thumbnail,
+    name,
+    hostName,
+    hostEmail,
+    desc,
+    category,
+    Quality,
+    MovieLink,
+    Language,
+  } = update;
+
+  const notify = () => {
+    return toast.success("Movie Added Successful!!!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+
+  const handleUpdateMovie = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const type = form.type.value;
+    const category = form.category.value;
+    const Quality = form.Quality.value;
+    const Language = form.Language.value;
+    const hostEmail = form.email.value;
+    const hostName = form.hostName.value;
+    const thumbnail = form.thumbnail.value;
+    const MovieLink = form.movieLink.value;
+    const desc = form.description.value;
+    console.log(
+      name,
+      type,
+      category,
+      thumbnail,
+      MovieLink,
+      desc,
+      Quality,
+      Language,
+      hostEmail,
+      hostName
+    );
+    const addMovie = {
+      name,
+      type,
+      category,
+      thumbnail,
+      MovieLink,
+      desc,
+      Quality,
+      Language,
+      hostEmail,
+      hostName,
+    };
+
+    fetch(`https://movie-master-server.vercel.app/editMovie/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addMovie),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.modifiedCount > 0) {
+          form.reset();
+          notify();
+        }
+        
+      });
+  };
   return (
     <div>
       <div>
@@ -10,7 +88,7 @@ const EditMovie = () => {
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Add a new product
             </h2>
-            <form action="#">
+            <form action="#" onSubmit={handleUpdateMovie}>
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                   <label
@@ -23,25 +101,28 @@ const EditMovie = () => {
                     type="text"
                     name="name"
                     id="name"
+                    defaultValue={name}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Type name"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
                   <label
-                    for="category"
+                    for="type"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Type
                   </label>
                   <select
-                    id="category"
+                    id="type"
+                    name="type"
+                    defaultValue={type}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   >
                     <option selected="">Select Type</option>
-                    <option value="">Movie</option>
-                    <option value="">Anime</option>
+                    <option value="movie">Movie</option>
+                    <option value="anime">Anime</option>
                   </select>
                 </div>
                 {/* <div class="w-full">
@@ -57,35 +138,122 @@ const EditMovie = () => {
                   </label>
                   <select
                     id="category"
+                    name="category"
+                    defaultValue={category}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   >
                     <option selected="">Select category</option>
-                    <option value="">Romantic</option>
-                    <option value="">Thriller</option>
-                    <option value="">Sad</option>
-                    <option value="">Action</option>
-                    <option value="">Horror</option>
-                    <option value="">Drama</option>
-                    <option value="">Comedy</option>
-                    <option value="">War</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Story">Story</option>
+                    <option value="Sad">Sad</option>
+                    <option value="Action">Action</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="War">War</option>
                   </select>
                 </div>
+
+                {/* Quality, Language	 */}
+
+                <div>
+                  <label
+                    for="Quality"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Quality
+                  </label>
+                  <select
+                    id="Quality"
+                    name="Quality"
+                    defaultValue={Quality}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  >
+                    <option selected="">Select Quality</option>
+                    <option value="720p">720p</option>
+                    <option value="1080p">1080p</option>
+                  </select>
+                </div>
+                {/* <div class="w-full">
+                  <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                  <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required=""/>
+              </div> */}
+                <div>
+                  <label
+                    for="Language"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Language
+                  </label>
+                  <select
+                    id="Language"
+                    name="Language"
+                    defaultValue={Language}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  >
+                    <option selected="">Select Language</option>
+                    <option value="Bangla">Bangla</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Tamil">Tamil</option>
+                  </select>
+                </div>
+                {/* Host Email */}
                 <div class="sm:col-span-2">
                   <label
-                    for="name"
+                    for="Email"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Host Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={hostEmail}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Host Email "
+                    required
+                  />
+                </div>
+                {/* Host Name */}
+                <div class="sm:col-span-2">
+                  <label
+                    for=""
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Host Name
+                  </label>
+                  <input
+                    type="text"
+                    name="hostName"
+                    id="hostName"
+                    value={hostName}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Host Name "
+                    required
+                  />
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label
+                    for="thumbnail"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Thumbnail
                   </label>
                   <input
                     type="link"
-                    name="picture"
-                    id="picture"
+                    name="thumbnail"
+                    id="thumbnail"
+                    defaultValue={thumbnail}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Thumbnail Link "
-                    required=""
+                    required
                   />
                 </div>
+
                 <div class="sm:col-span-2">
                   <label
                     for="name"
@@ -95,11 +263,12 @@ const EditMovie = () => {
                   </label>
                   <input
                     type="link"
-                    name="Movie-link"
+                    name="movieLink"
                     id="link"
+                    defaultValue={MovieLink}
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Movie Link "
-                    required=""
+                    required
                   />
                 </div>
 
@@ -112,18 +281,22 @@ const EditMovie = () => {
                   </label>
                   <textarea
                     id="description"
+                    name="description"
                     rows="8"
+                    defaultValue={desc}
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Your description here"
+                    required
                   ></textarea>
                 </div>
               </div>
-              <Link 
+              <button
                 type="submit"
                 class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-[#6B717A] rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
               >
-                Edit Movie
-              </Link>
+                Add Movie
+              </button>
+              <ToastContainer></ToastContainer>
             </form>
           </div>
         </section>

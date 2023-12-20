@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-const MovieDetails = () => {
+const AnimeDetails = () => {
   const update = useLoaderData();
   console.log(update);
   const {
@@ -118,4 +118,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default AnimeDetails;

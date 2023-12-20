@@ -33,7 +33,7 @@ const Series = () => {
               class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-pink-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
-              Learn More
+              View all
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
